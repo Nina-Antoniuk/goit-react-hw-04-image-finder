@@ -37,9 +37,6 @@ class ImageGallery extends Component {
             searchResults: result.hits,
             status: 'resolve',
           });
-          // if (this.state.searchResults.length === 0) {
-          //   toast.error('The request was rejected', {toastId: uuid()})
-          // }
         })
         .catch(err => {
           this.setState({ error: err, status: 'error' });
