@@ -1,6 +1,6 @@
 import { Component } from 'react';
-// import { toast } from 'react-toastify';
-// import { v1 as uuid } from 'uuid';
+import { toast } from 'react-toastify';
+import { v1 as uuid } from 'uuid';
 import Loader from 'react-loader-spinner';
 import PropTypes from 'prop-types';
 import FetchPhotos from '../../services/pixabay';
@@ -91,14 +91,14 @@ class ImageGallery extends Component {
       // toast.error('The request was rejected', {toastId: uuid()})
       return (
         <div className="info">
-          <b>The request was rejected</b>
+          <b>Opps, the request was rejected. Try again.</b>
         </div>
       );
     }
 
     if (status === 'resolve') {
       if (this.state.searchResults.length === 0) {
-        // toast.error('The request was rejected', {toastId: uuid()})
+        // toast.error('Sorry, no matches was found', {toastId: uuid()})
         return (
           <div className="info">
             <b>Sorry, no matches was found</b>
