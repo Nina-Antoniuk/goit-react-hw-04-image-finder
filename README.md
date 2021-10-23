@@ -1,10 +1,14 @@
-# Домашне завдання 3
+# Домашне завдання 4.3
 
-## Тема: життевий цикл компонента. REST API
+## Тема: Хуки
 
 Завдання виконано відповідно до ТЗ -
-https://github.com/goitacademy/react-homework/tree/master/homework-03
+https://github.com/goitacademy/react-homework/blob/master/hooks/README.md
 
 ## Технології:
 
 - React;
+- modal, gal,
+- hooks(app, btn, galItem, bar, pix)
+- proptypes(btn, galItem, bar, pix, modal)
+- styles

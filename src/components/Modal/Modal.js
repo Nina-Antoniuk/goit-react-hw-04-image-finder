@@ -1,35 +1,38 @@
-import { Component } from 'react';
+import { useEffect, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 
-export class Modal extends Component {
-  componentDidMount() {
-    window.addEventListener('keydown', this.handleEscape);
-  }
+function Modal({ switcher, children }) {
+  useEffect(() => {
+    //useCallback, escape
+    window.addEventListener('keydown', handleEscape);
 
-  componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleEscape);
-  }
+    return window.removeEventListener('keydown', handleEscape);
+  }, []);
 
-  handleEscape = e => {
+  const handleEscape = e => {
     if (e.code === 'Escape') {
-      this.props.switcher();
+      switcher();
     }
   };
 
-  handleClose = e => {
+  const handleClose = e => {
     if (e.currentTarget === e.target) {
-      this.props.switcher();
+      switcher();
     }
   };
 
-  render() {
-    return createPortal(
-      <div className="Overlay" onClick={this.handleClose}>
-        <div className="Modal">{this.props.children}</div>
-      </div>,
-      document.getElementById('modalRoot'),
-    );
-  }
+  return createPortal(
+    <div className="Overlay" onClick={handleClose}>
+      <div className="Modal">{children}</div>
+    </div>,
+    document.getElementById('modalRoot'),
+  );
 }
+
+Modal.propTypes = {
+  switcher: PropTypes.func,
+  children: PropTypes.element,
+};
 
 export default Modal;
