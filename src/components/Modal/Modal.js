@@ -1,21 +1,21 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
+import s from './Modal.module.css';
 
 function Modal({ switcher, children }) {
   useEffect(() => {
-    //useCallback, escape
     window.addEventListener('keydown', handleEscape);
-
-    return window.removeEventListener('keydown', handleEscape);
-  }, []);
+    return () => {
+      window.removeEventListener('keydown', handleEscape);
+    };
+  });
 
   const handleEscape = e => {
-    if (e.code === 'Escape') {
+    if (e.key === 'Escape') {
       switcher();
     }
   };
-
   const handleClose = e => {
     if (e.currentTarget === e.target) {
       switcher();
@@ -23,8 +23,8 @@ function Modal({ switcher, children }) {
   };
 
   return createPortal(
-    <div className="Overlay" onClick={handleClose}>
-      <div className="Modal">{children}</div>
+    <div className={s.Overlay} onClick={handleClose}>
+      <div className={s.Modal}>{children}</div>
     </div>,
     document.getElementById('modalRoot'),
   );

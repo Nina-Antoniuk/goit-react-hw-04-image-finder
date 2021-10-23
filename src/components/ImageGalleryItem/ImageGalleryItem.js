@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import s from './ImageGalleryItem.module.css';
 
 function ImageGalleryItem({ openModal, getImage, largeImage, preiew, desc }) {
   function onItemClick(e) {
@@ -7,9 +8,9 @@ function ImageGalleryItem({ openModal, getImage, largeImage, preiew, desc }) {
   }
 
   return (
-    <li className="ImageGalleryItem" onClick={onItemClick}>
+    <li className={s.ImageGalleryItem} onClick={onItemClick}>
       <img
-        className="ImageGalleryItem-image"
+        className={s.ImageGalleryItemImage}
         src={preiew}
         data-source={largeImage}
         alt={desc}
