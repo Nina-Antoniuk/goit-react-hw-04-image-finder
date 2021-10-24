@@ -44,7 +44,7 @@ function ImageGallery({ searchValue }) {
       setSearchResults([...searchResults, ...response.hits]);
 
       window.scrollTo({
-        top: document.querySelector('.ImageGallery').scrollHeight,
+        top: document.documentElement.scrollHeight,
         behavior: 'smooth',
       });
     });
